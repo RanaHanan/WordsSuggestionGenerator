@@ -17,5 +17,18 @@ namespace WordsSuggestionGenerator
         {
             InitializeComponent();
         }
+		
+		private void LoadFunction()
+        {
+            string[] readtext = File.ReadAllLines("test.txt");
+            foreach(string x in readtext)
+            {
+                tree.Insert(x);
+            }
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            LoadFunction();
+        }
     }
 }
