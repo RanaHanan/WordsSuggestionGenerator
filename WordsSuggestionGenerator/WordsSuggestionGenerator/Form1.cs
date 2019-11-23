@@ -104,5 +104,27 @@ namespace WordsSuggestionGenerator
                 wordsuggestioner(root.Right, wrongword);
             }
         }
+		private void button1_Click(object sender, EventArgs e)
+        {
+            string testString = textBox1.Text;
+            listofwords = testString.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach(string x in listofwords)
+            {
+                if(FindNode(tree.Root,x)== "Found")
+                {
+                    MessageBox.Show("Correct Word");
+             
+                }
+                else
+                {
+                    MessageBox.Show("Not Found");
+                    wordsuggestioner(tree.Root, x);
+                    listOfWrongWord.Add(x);
+                    listOfSuggesstions.Add(word);
+                    MessageBox.Show(word);
+                    preword = word = "";
+                }
+            }
+        }
     }
 }
