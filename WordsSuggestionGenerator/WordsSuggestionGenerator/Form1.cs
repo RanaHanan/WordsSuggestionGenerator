@@ -83,5 +83,26 @@ namespace WordsSuggestionGenerator
             }
             return d[n, m];
         }
+
+
+        void wordsuggestioner(Node root, string wrongword)
+        {
+            //word = preword = "";
+            if (root == null)
+                return;
+            else
+            {
+                if (FindNode(tree.Root, wrongword) == "Not Found")
+                {
+                    if (LevenshteinDistance(root.Data, wrongword) < 3 && preword != root.Data)
+                    {
+                        word = word + root.Data + " ";
+                    }
+                    preword = root.Data;
+                }
+                wordsuggestioner(root.Left, wrongword);
+                wordsuggestioner(root.Right, wrongword);
+            }
+        }
     }
 }
