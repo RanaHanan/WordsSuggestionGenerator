@@ -13,6 +13,11 @@ namespace WordsSuggestionGenerator
 {
     public partial class Form1 : Form
     {
+        string word = "";
+        string preword = "";
+        string[] listofwords;
+        List<string> listOfWrongWord = new List<string>();
+        List<string> listOfSuggesstions = new List<string>();
        
         private BinaryTree tree = new BinaryTree();
         public Form1()
@@ -49,7 +54,6 @@ namespace WordsSuggestionGenerator
 
             return "Found";
         }
-		
         public static int LevenshteinDistance(string s, string t)
         {
             int n = s.Length;
@@ -83,18 +87,16 @@ namespace WordsSuggestionGenerator
             }
             return d[n, m];
         }
-
-
-        void wordsuggestioner(Node root, string wrongword)
+        void wordsuggestioner(Node root,string wrongword)
         {
             //word = preword = "";
             if (root == null)
                 return;
-            else
+           else
             {
-                if (FindNode(tree.Root, wrongword) == "Not Found")
+                if(FindNode(tree.Root, wrongword) == "Not Found")
                 {
-                    if (LevenshteinDistance(root.Data, wrongword) < 3 && preword != root.Data)
+                    if(LevenshteinDistance(root.Data, wrongword) <3 && preword!=root.Data)
                     {
                         word = word + root.Data + " ";
                     }
@@ -104,7 +106,9 @@ namespace WordsSuggestionGenerator
                 wordsuggestioner(root.Right, wrongword);
             }
         }
-		private void button1_Click(object sender, EventArgs e)
+
+
+        private void button1_Click(object sender, EventArgs e)
         {
             string testString = textBox1.Text;
             listofwords = testString.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -125,6 +129,11 @@ namespace WordsSuggestionGenerator
                     preword = word = "";
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dataGridView2.DataSource = listOfWrongWord;
         }
     }
 }
