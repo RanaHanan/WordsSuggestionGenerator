@@ -13,6 +13,7 @@ namespace WordsSuggestionGenerator
 {
     public partial class Form1 : Form
     {
+        private BinaryTree tree = new BinaryTree();
         public Form1()
         {
             InitializeComponent();
