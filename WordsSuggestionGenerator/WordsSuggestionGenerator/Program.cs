@@ -17,6 +17,9 @@ namespace WordsSuggestionGenerator
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            //WordsSuggestionGenerator tree1 = new WordsSuggestionGenerator();
+          
+            //tree1.add(100000000);
         }
     }
 }
